@@ -1,9 +1,16 @@
-Quarkus - Amazon Lambda with RESTEasy, Undertow, or Vert.x Web
+# Quarkus - Amazon Lambda with RESTEasy, Undertow, or Vert.x Web
 ===
-As described [Quarkus - Amazon Lambda with RESTEasy, Undertow, or Vert.x Web](https://quarkus.io/guides/amazon-lambda-http).
-Generated, `mvn install`. Guess what. i wouldn't even compile.
-Since this is module is under development i had to adjust the version number.
-Consulting [Mvn Repository](https://mvnrepository.com/artifact/io.quarkus/quarkus-core-deployment) showed i should probably change to quarkus v1.2.0.Final.
+As described [Quarkus - Amazon Lambda with RESTEasy, Undertow, or Vert.x Web](https://quarkus.io/guides/amazon-lambda-http).   
+
+## Compile
+
+Generated, `mvn install`. Guess what.    
+It wouldn't even compile :-(   
+Since this module is under development i had to adjust the version number.
+Consulting [Mvn Repository](https://mvnrepository.com/artifact/io.quarkus/quarkus-core-deployment) showed i should probably update to quarkus v1.2.0.Final.   
+`mvn install` worked.   
+
+## Local test
 
 I tried to fire up the lamba code locally in a mocked lambda env:
 ```bash
@@ -11,7 +18,8 @@ $> sam local start-api --template sam.jvm.yaml
 ```
 
 Next error showed up:
-```
+
+```bash
 Error: [InvalidResourceException('Quarkus_lambdaFunction', 'Logical ids must be alphanumeric.')] ('Quarkus_lambdaFunction', 'Logical ids must be alphanumeric.')
 ```
 
@@ -37,5 +45,5 @@ Server: Werkzeug/0.16.0 Python/3.7.6
 hello jaxrs
 ```
 
-Here I use httpie to call the rest endpoint. But curl / firefox etc. would also get the job done.
+Here I use [httpie](https://httpie.org/) to call the rest endpoint. But curl / firefox etc. would also get the job done.
 
