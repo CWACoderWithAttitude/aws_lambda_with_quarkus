@@ -8,7 +8,7 @@
         - "*/*"
 
   Resources:
-    Quarkus_lambdaFunction:
+    QuarkusLambdaFunction:
       Type: AWS::Serverless::Function
       Properties:
         Handler: io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest
