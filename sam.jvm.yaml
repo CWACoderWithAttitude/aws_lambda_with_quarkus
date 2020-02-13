@@ -25,8 +25,8 @@
               Method: any
 
   Outputs:
-    Quarkus_lambdaApi:
+    QuarkusLambdaApi:
       Description: URL for application
       Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/'
       Export:
-        Name: Quarkus_lambdaApi
+        Name: QuarkusLambdaApi
