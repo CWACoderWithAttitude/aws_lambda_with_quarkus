@@ -1,7 +1,8 @@
 # Quarkus - Amazon Lambda with RESTEasy, Undertow, or Vert.x Web
 
 I'm a huge fan of [quarkus-framework](https://quarkus.io/). And i like serverless coding pretty much.
-This is a comprehensive description of the steps i took to make it work. Luckily the geniuses over at quarkus have published a great documentation.    
+This is a comprehensive description of the steps i took to make it work.
+Luckily the geniuses over at [Quarkus.io](https://quarkus.io/) have published a great documentation.    
 So, this describes ma followinbg the description [Quarkus - Amazon Lambda with RESTEasy, Undertow, or Vert.x Web](https://quarkus.io/guides/amazon-lambda-http).   
 Filling in the gaps was fun. Great fun - see for yourself:   
 
@@ -219,5 +220,55 @@ hello jaxrs
 ```
 
 So far - so good.
+
+## Adding OpenAPI 3.0
+
+APIs should be documented. The defacto standard way to do this is OpenAPI - aka Swagger.
+OpenAPI is supported by Quarkus OOTB. You just have to add the appropriate module:
+ 
+```bash
+$> mvn quarkus:add-extension -Dextension="quarkus-smallrye-openapi"
+```
+
+This adds two new endpoints to your app:
+* /openapi
+* /swagger-ui
+
+### OpenAPI
+
+This produces a yaml file describing the deployed endpoints.
+
+```yaml
+http http://127.0.0.1:9090/openapi
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Content-Type, Authorization
+Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+Access-Control-Allow-Origin: *
+Access-Control-Max-Age: 86400
+Content-Type: application/yaml;charset=UTF-8
+content-length: 243
+
+---
+openapi: 3.0.1
+info:
+  title: Generated API
+  version: "1.0"
+paths:
+  /hello:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+```
+
+### Swagger-UI
+
+This shows an interface to test and debug your endpoints.
+
 
 
